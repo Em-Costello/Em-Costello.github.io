@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emily E. Costello · Astrophysics, LJMU</title>
+  <meta name="description" content="Emily E. Costello, PhD candidate at the Astrophysics Research Institute, Liverpool John Moores University. Cosmological simulations of black hole feedback in galaxy groups and clusters.">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F7F9;
+      --ink: #1B2230;
+      --muted: #5A6474;
+      --rule: #D9DDE4;
+      --accent: #4B3FA0;
+      --halo: #8A80CC;
+      --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141821;
+        --ink: #E6E8EE;
+        --muted: #9AA3B2;
+        --rule: #2C3340;
+        --accent: #A99EF0;
+        --halo: #6D63B8;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Navigation */
+    nav {
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .wrap { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; padding-top: 0.9rem; padding-bottom: 0.9rem; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+
+    /* Header with halo */
+    header { padding: 3.5rem 0 2.5rem; }
+    header .wrap { display: grid; grid-template-columns: 15rem 1fr; gap: 2.25rem; align-items: center; }
+    .halo { position: relative; width: 15rem; height: 15rem; }
+    .halo svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .halo img {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 9.5rem; height: 9.5rem;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 25%;
+      background: var(--rule);
+    }
+    .halo text { font-family: var(--sans); font-size: 9px; fill: var(--muted); }
+    h1 {
+      font-weight: 500;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.6rem;
+    }
+    .role { margin: 0 0 1rem; color: var(--muted); line-height: 1.45; }
+    .links { font-family: var(--sans); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 0; padding: 0; list-style: none; }
+
+    /* Sections */
+    section { padding: 2.25rem 0; border-top: 1px solid var(--rule); }
+    h2 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--accent);
+      margin: 0 0 1.1rem;
+    }
+    p { margin: 0 0 1rem; }
+
+    /* Lists of entries */
+    .entries { list-style: none; margin: 0; padding: 0; }
+    .entries li { margin-bottom: 1.25rem; }
+    .entries li:last-child { margin-bottom: 0; }
+    .title { font-weight: 500; }
+    .meta { display: block; color: var(--muted); font-size: 1rem; }
+    .me { font-weight: 600; color: var(--ink); }
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid currentColor;
+      border-radius: 3px;
+      padding: 0.05rem 0.4rem;
+      margin-left: 0.35rem;
+      white-space: nowrap;
+      vertical-align: 0.1em;
+    }
+
+    /* Dated rows: talks, positions, teaching */
+    .dated { list-style: none; margin: 0; padding: 0; }
+    .dated li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .dated li:last-child { border-bottom: 0; }
+    .when { font-family: var(--sans); font-size: 0.875rem; color: var(--muted); padding-top: 0.2rem; }
+    .dated .meta { font-size: 0.95rem; }
+
+    footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+
+    @media (max-width: 40rem) {
+      header .wrap { grid-template-columns: 1fr; justify-items: start; }
+      .dated li { grid-template-columns: 1fr; gap: 0.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#talks">Talks</a>
+    <a href="#experience">Experience</a>
+    <a href="#teaching">Teaching &amp; service</a>
+    <a href="CV2026.pdf">CV (PDF)</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="halo">
+      <!-- Concentric rings evoke the halo radii used in cluster studies -->
+      <svg viewBox="0 0 240 240" aria-hidden="true">
+        <circle cx="120" cy="120" r="88"  fill="none" stroke="var(--halo)" stroke-width="1" opacity="0.9"/>
+        <circle cx="120" cy="120" r="104" fill="none" stroke="var(--halo)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+        <circle cx="120" cy="120" r="119" fill="none" stroke="var(--halo)" stroke-width="1" stroke-dasharray="1 5" opacity="0.45"/>
+        <text x="190" y="52">R₂₅₀₀</text>
+        <text x="203" y="36">R₅₀₀</text>
+        <text x="214" y="20">R₂₀₀</text>
+      </svg>
+      <img src="./staff-photo.JPG" alt="Emily Costello">
+    </div>
+    <div>
+      <h1>Emily E. Costello</h1>
+      <p class="role">
+        PhD candidate, Astrophysics Research Institute<br>
+        Liverpool John Moores University
+      </p>
+      <ul class="links">
+        <li><a href="mailto:E.E.Costello@2019.ljmu.ac.uk">E.E.Costello@2019.ljmu.ac.uk</a></li>
+        <li><a href="https://orcid.org/0009-0007-1193-6866">ORCID</a></li>
+        <li><a href="https://scholar.google.com/citations?user=LB6340kAAAAJ&amp;hl=en">Google Scholar</a></li>
+        <li><a href="https://ui.adsabs.harvard.edu/search/q=orcid%3A0009-0007-1193-6866&amp;sort=date%20desc">NASA ADS</a></li>
+        <li><a href="CV2026.pdf">CV</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research</h2>
+    <p>
+      I study how supermassive black holes shape the haloes they live in. Energy released by
+      accreting black holes heats and expels gas from galaxy groups and clusters, changing their
+      X-ray and Sunyaev–Zel'dovich properties and redistributing matter on the scales that
+      large-scale structure surveys use to measure cosmology.
+    </p>
+    <p>
+      My work uses the FLAMINGO suite of large-volume cosmological hydrodynamical simulations to
+      trace the co-evolution of hot gas and black holes across cosmic time, and to understand how
+      baryonic feedback and cosmology together set the observable properties of groups and clusters.
+      I'm supervised by Prof Ian McCarthy, Dr Jaime Salcido and Prof Robert Crain, and funded through
+      the Liv.INNO Centre for Doctoral Training in data-intensive science.
+    </p>
+    <p>
+      Alongside the PhD I work as a data scientist on a DiRAC-supported project with the KCL
+      Department of Women and Young People's Health and Evelina Children's Hospital, studying how
+      data and research move across the clinical–academic boundary.
+    </p>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications</h2>
+    <ul class="entries">
+      <li>
+        <span class="title">FLAMINGO: Tracing the co-evolution of hot gas and black holes in galaxy groups and clusters</span>
+        <span class="tag">First author</span>
+        <span class="meta"><span class="me">Costello, E. E.</span>, McCarthy, I. G., Salcido, J., Helly, J. C., McGibbon, R. J., Schaller, M., Schaye, J. (2025)</span>
+        <span class="meta"><a href="https://arxiv.org/abs/2510.17980">arXiv:2510.17980</a></span>
+      </li>
+      <li>
+        <span class="title">FLAMINGO: The thermal history of the Universe as a probe for cosmology and galaxy formation</span>
+        <span class="meta">Salcido, J., Yang, T., McCarthy, I. G., <span class="me">Costello, E. E.</span>, et al. (2026)</span>
+        <span class="meta"><a href="https://arxiv.org/abs/2605.11083">arXiv:2605.11083</a></span>
+      </li>
+      <li>
+        <span class="title">The FLAMINGO Simulations Data Release</span>
+        <span class="meta">Helly, J. C., McGibbon, R. J., …, <span class="me">Costello, E. E.</span>, et al. (2026)</span>
+        <span class="meta"><a href="https://arxiv.org/abs/2604.24324">arXiv:2604.24324</a></span>
+      </li>
+      <li>
+        <span class="title">The Flamboyance project: an exploration of how baryonic feedback and cosmology conspire to shape large-scale structure</span>
+        <span class="meta">McCarthy, I. G., …, <span class="me">Costello, E. E.</span>, et al. (in prep.)</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="talks">
+  <div class="wrap">
+    <h2>Talks &amp; presentations</h2>
+    <ul class="dated">
+      <li><span class="when">Jul 2026</span><div>International HPC Summer School, Perth, Australia<span class="meta">Poster</span></div></li>
+      <li><span class="when">Jun 2026</span><div>UoM–LJMU–LU Extragalactic Meeting, University of Manchester<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">May 2026</span><div>Baryons @ Princeton Workshop, Princeton University, USA<span class="meta">Invited talk</span></div></li>
+      <li><span class="when">Mar 2026</span><div>Friday Lunchtime Astronomy Talk, Durham University<span class="meta">Invited talk</span></div></li>
+      <li><span class="when">Jan 2026</span><div>Galaxies &amp; Cosmology Theory Group, Max Planck Institute for Astronomy (online)<span class="meta">Invited talk</span></div></li>
+      <li><span class="when">Oct 2025</span><div>Multi-Phase, Multi-Temperature and Complex, Sardinia, Italy<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">Sep 2025</span><div>Prospero@5 Symposium, Liverpool John Moores University<span class="meta">Invited talk</span></div></li>
+      <li><span class="when">Jul 2025</span><div>Cosmic Ecosystems, Perimeter Institute for Theoretical Physics, Canada<span class="meta">Contributed flash talk</span></div></li>
+      <li><span class="when">Jan 2025</span><div>Virgo Consortium Collaboration Meeting, University of Sussex<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">Sep 2024</span><div>Galaxy Clusters Journal Club, University of Michigan (online)<span class="meta">Invited seminar</span></div></li>
+      <li><span class="when">Sep 2024</span><div>SWIFTcon Collaboration Meeting, Leiden University, The Netherlands<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">Jul 2024</span><div>Liv.INNO Showcase Event, University of Liverpool<span class="meta">Poster</span></div></li>
+      <li><span class="when">Jul 2024</span><div>National Astronomy Meeting, University of Hull<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">Jun 2024</span><div>Galaxy Groups in the Era of eROSITA &amp; Euclid, Sesto, Italy<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">May 2024</span><div>Alan Turing PhD Networking Day, University of Liverpool<span class="meta">Contributed talk</span></div></li>
+      <li><span class="when">Sep 2022</span><div>Nuclear Security Science Network Conference, Institute of Physics<span class="meta">Poster</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Positions &amp; education</h2>
+    <ul class="dated">
+      <li><span class="when">2026 – present</span><div>Data Scientist, DiRAC with Evelina Children's Hospital and KCL Department of Women and Young People's Health<span class="meta">The movement of data and research across the clinical–academic boundary: how permeable is it? Supervisor: Prof Ingrid Wolfe</span></div></li>
+      <li><span class="when">2023 – present</span><div>PhD in Astrophysics, Liverpool John Moores University &amp; Liv.INNO CDT<span class="meta">Thesis: How do supermassive black holes affect their host haloes? Supervisors: Prof Ian McCarthy, Dr Jaime Salcido, Prof Robert Crain</span></div></li>
+      <li><span class="when">2019 – 2023</span><div>MPhys Astrophysics, First Class Honours, Liverpool John Moores University &amp; University of Liverpool<span class="meta">Thesis: Using cosmological simulations to investigate the impact of black hole populations on galaxy groups and clusters</span></div></li>
+      <li><span class="when">Summer 2022</span><div>Nuclear Physics Summer Intern, NuSec &amp; University of Liverpool<span class="meta">Characterisation of CZT crystals for improved position resolution and defect correction in nuclear imaging and security. Supervisor: Dr Ellis Rintoul</span></div></li>
+    </ul>
+
+    <h2 style="margin-top:2rem">Training</h2>
+    <ul class="dated">
+      <li><span class="when">Jul 2026</span><div>International HPC Summer School, Perth, Australia</div></li>
+      <li><span class="when">Sep 2025</span><div>Fundamentals of GPU Accelerated Computing with Modern CUDA C++, NVIDIA</div></li>
+      <li><span class="when">Sep 2024</span><div>STFC Advanced Cosmology &amp; Extragalactic School, Sussex</div></li>
+      <li><span class="when">Oct 2023</span><div>DiRAC Foundations of HPC Skills Course</div></li>
+      <li><span class="when">Oct 2023</span><div>Liv.INNO Data Science Skills School, Liverpool</div></li>
+      <li><span class="when">Sep 2023</span><div>Introductory Astronomy Summer School, Hull</div></li>
+    </ul>
+
+    <h2 style="margin-top:2rem">Awards</h2>
+    <ul class="dated">
+      <li><span class="when">2023</span><div>Isaac Roberts Prize for Best Astrophysics Student, University of Liverpool</div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap">
+    <h2>Teaching</h2>
+    <ul class="dated">
+      <li><span class="when">2024 – 2026</span><div>PHYS374 Relativity and Cosmology, problems classes<span class="meta">Graduate Teaching Assistant</span></div></li>
+      <li><span class="when">2024 – 2025</span><div>PHYS400 Practical Astrophysics II, field trip supervision<span class="meta">Graduate Teaching Assistant</span></div></li>
+      <li><span class="when">2024</span><div>PHYS216 Practical Astrophysics I, problems classes<span class="meta">Graduate Teaching Assistant</span></div></li>
+    </ul>
+
+    <h2 style="margin-top:2rem">Outreach &amp; service</h2>
+    <ul class="dated">
+      <li><span class="when">2024 – 2026</span><div>Lead organiser, Extragalactic &amp; HPC Journal Club<span class="meta">Graduate-led forum for staff and students on extragalactic astrophysics and high-performance computing; now the largest and most active forum at the ARI</span></div></li>
+      <li><span class="when">2023 – present</span><div>Lead organiser, ARI Astrophysics Book Club</div></li>
+      <li><span class="when">2025</span><div>Work Experience Week project lead, University of Liverpool</div></li>
+      <li><span class="when">2021, 2023</span><div>Outreach assistant, The Schools' Observatory, LJMU<span class="meta">Work Experience Week project supervision</span></div></li>
+      <li><span class="when">2021 – 2023</span><div>Lead organiser, Peer-Assisted Learning scheme<span class="meta">Supporting first-year students with the transition to university</span></div></li>
+      <li><span class="when">2020 – 2023</span><div>Course representative and co-chair, Student–Staff Liaison Committee<span class="meta">Led an enhancement project whose recommendations were adopted by the department</span></div></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Last updated October 2026</div>
+</footer>
+
+</body>
+</html>
